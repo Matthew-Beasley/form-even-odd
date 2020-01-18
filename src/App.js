@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [numbers, setNumbers] = useState([1, 2, 3]);
+
+  const createNumber = (ev) => {
+    setNumbers([...numbers, Math.ceil(Math.random() * 10)]);
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <button onClick={ () => createNumber()}>Make Number</button>
+      </div>
+      <div>
+        <ul>
+          {numbers.map((number, idx) => {
+            return (<li key={idx}>{number}</li>);
+          })}
+        </ul>
+      </div>
     </div>
+    
   );
 }
 
