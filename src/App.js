@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Form from './Form';
 import './App.css';
 
 
@@ -32,22 +33,7 @@ function App() {
       <div>
         <h4>There are {unique.size} unique numbers</h4>
       </div>
-      <form onSubmit={(event) => { event.preventDefault() }}>
-        <div>
-          <label>Even Only</label>
-          <input type="checkbox" checked={checked} onChange={() => setCheck(!checked)}/>
-        </div>
-        <div>
-          <button onClick={ () => createNumber()}>Make Number</button>
-        </div>
-        <div>
-          <ul>
-            {numbers.map((number, idx) => {
-              return (<li key={idx}>{number}</li>);
-            })}
-          </ul>
-        </div>
-      </form>
+      <Form checked={checked} createNumber={createNumber} setCheck={setCheck} numbers={numbers}/>
     </div>
     
   );
